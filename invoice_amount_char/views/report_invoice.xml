@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="invoice_amount_to_text" inherit_id="account.report_invoice_document">
+        <xpath expr="//p[@t-if='o.invoice_payment_term_id']" position="before">
+            <p>
+                <strong>Arrêtée la présente facture à la somme de
+                <span t-esc="o.amount_text"/></strong>
+            </p>
+        </xpath>
+        <xpath expr="//tbody[@class='invoice_tbody']/t/tr/t/td[2]" position="replace">
+            <td class="text-right">
+                <span t-field="line.quantity"/>
+            </td>
+        </xpath>
+    </template>
+</odoo>
