@@ -13,7 +13,7 @@
     'data': [
         'views/partner_extend_view.xml',
         # 'views/report_saleorder_document.xml',
-        'views/sale_order_extend_view.xml',
+        # 'views/sale_order_extend_view.xml',
     ],
     'demo_xml': [],
     'installable': True,
