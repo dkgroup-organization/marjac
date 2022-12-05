@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 {
-    "name": u"Ajout champs divers dans la fiche partenaire",
+    "name": "Ajout champs divers dans la fiche partenaire",
     "version": "1.0",
     "depends": ['base', 'sale', 'account'],
     "author": "Mehdi Hajji",
