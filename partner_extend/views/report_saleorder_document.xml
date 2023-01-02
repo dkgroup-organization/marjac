@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_saleorder_inherited" inherit_id="sale.report_saleorder_document">
+
+            <xpath expr="//p[@t-if='doc.partner_id.vat']" position="replace">
+                <p t-if="doc.partner_id.ice" class="m-0"><t t-esc="'ICE'"/>: <span t-field="doc.partner_id.ice"/></p>
+                <p t-if="doc.partner_id.rc"><t t-esc="'RC'"/>: <span t-field="doc.partner_id.rc"/></p>
+            </xpath>
+			
+		</template>
+		
+    </data>
+</odoo>
