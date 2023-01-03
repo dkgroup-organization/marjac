@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_saleorder_inherited" inherit_id="account.report_invoice_document">
+
+            <xpath expr="//div[@t-if='o.partner_id.vat']" position="replace">
+                <p t-if="o.partner_id.ice" class="m-0"><t t-esc="'ICE'"/>: <span t-field="o.partner_id.ice"/></p>
+                <p t-if="o.partner_id.rc"><t t-esc="'RC'"/>: <span t-field="o.partner_id.rc"/></p>
+            </xpath>
+			
+		</template>
+		
+    </data>
+</odoo>
