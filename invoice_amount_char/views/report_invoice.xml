@@ -11,6 +11,6 @@
             <!-- <td class="text-right"> -->
                 <!-- <span t-field="line.quantity"/> -->
             <!-- </td> -->
-        </xpath>
+        <!-- </xpath> -->
     </template>
 </odoo>
