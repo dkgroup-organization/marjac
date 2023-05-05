@@ -85,11 +85,11 @@
 
             <xpath expr="//div[@class='page']" position="after">
                 <div class="signatures">
-                    <div class="signature" style="border: 1px solid black;">
+                    <div class="signature" style="border: 1px solid black; float: left;">
                         <p class="name">Accusé client :</p>
                         <p class="placeholder"></p>
                     </div>
-                    <div class="signature" style="border: 1px solid black;">
+                    <div class="signature" style="border: 1px solid black; float: right;">
                         <p class="name">Responsable stock :</p>
                         <p class="placeholder"></p>
                     </div>
