@@ -82,6 +82,20 @@
                         </tbody>
                     </table>
             </xpath>
+
+            <xpath expr="//div[@class='page']" position="after">
+                <div class="signatures">
+                    <div class="signature" style="border: 1px solid black;">
+                        <p class="name">Accusé client :</p>
+                        <p class="placeholder"></p>
+                    </div>
+                    <div class="signature" style="border: 1px solid black;">
+                        <p class="name">Responsable stock :</p>
+                        <p class="placeholder"></p>
+                    </div>
+                </div>
+            </xpath>
+
 		</template>
 
         <template id="stock_report_delivery_has_serial_move_line_inherits" inherit_id="stock.stock_report_delivery_has_serial_move_line">
