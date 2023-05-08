@@ -84,43 +84,12 @@
             </xpath>
 
             <xpath expr="//div[@class='page']" position="after">
-                <style>
-                    .signature-block {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        margin-top: 10mm;
-                        border-top: 1px solid black;
-                        padding-top: 5mm;
-                    }
-                    .signature {
-                        flex: 1;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        border: 1px solid black;
-                        padding: 5mm;
-                        max-width: 45%;
-                    }
-                    .signature-space {
-                        width: 10mm;
-                    }
-                    .name {
-                        font-weight: bold;
-                        margin-bottom: 5mm;
-                    }
-                    .placeholder {
-                        height: 30mm;
-                        border-bottom: 1px solid black;
-                    }
-                </style>
-                <div class="signature-block">
-                    <div class="signature">
+                <div class="signatures">
+                    <div class="signature" style="text-align: left; border: 1px solid black; width: 30%; display: inline-block;">
                         <p class="name">Accusé client :</p>
                         <p class="placeholder"></p>
                     </div>
-                    <div class="signature-space"></div>
-                    <div class="signature">
+                    <div class="signature" style="text-align: right; border: 1px solid black; width: 30%; display: inline-block;">
                         <p class="name">Responsable stock :</p>
                         <p class="placeholder"></p>
                     </div>
