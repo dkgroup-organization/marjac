@@ -89,7 +89,7 @@
                         <p class="name">Accusé client :</p>
                         <p class="placeholder"></p>
                     </div>
-                    <div class="signature" style="text-align: right; border: 1px solid black; width: 30%; display: inline-block;">
+                    <div class="signature" style="text-align: right; border: 1px solid black; width: 30%; display: inline-block; margin-left: 50px;">
                         <p class="name">Responsable stock :</p>
                         <p class="placeholder"></p>
                     </div>
