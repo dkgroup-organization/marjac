@@ -22,10 +22,14 @@
                                 <th name="th_sml_qty_ordered" class="text-center" t-if="not has_serial_number">
                                     <strong>Commandé</strong>
                                 </th>
+
                                 <th name="th_sml_quantity" class="text-center"><strong>Délivré</strong></th>
-                                <th name="th_sml_quantity" class="text-center"><strong>Nbr d'unité</strong></th>
-                                <th name="th_sml_production_date" class="text-center"><strong>Date de fabrication</strong></th>
-                                <th name="th_sml_expiration_date" class="text-center"><strong>Date d'expiration</strong></th>
+
+                                <t name="lot_serial" t-if="has_serial_number2">
+                                    <th name="th_sml_quantity" class="text-center"><strong>Nbr d'unité</strong></th>
+                                    <th name="th_sml_production_date" class="text-center"><strong>Date de fabrication</strong></th>
+                                    <th name="th_sml_expiration_date" class="text-center"><strong>Date d'expiration</strong></th>
+                                </t>
                             </tr>
                         </thead>
                         <tbody>
