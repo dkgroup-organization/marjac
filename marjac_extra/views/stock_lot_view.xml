@@ -7,11 +7,9 @@
             <field name="model">stock.lot</field>
              <field name="inherit_id" ref="product_expiry.view_move_form_expiry" />
             <field name="arch" type="xml">
-
                 <xpath expr="//field[@name='removal_date']" position="after">
                     <field name="fabrication_date"/>
                 </xpath>
-                
             </field>
         </record>    
 		
