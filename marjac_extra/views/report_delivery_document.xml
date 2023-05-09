@@ -107,11 +107,16 @@
             </xpath>
         </template>
 
-        <template id="view_stock_move_line_detailed_operation_tree_inherits" inherit_id="stock.view_stock_move_line_detailed_operation_tree">
-            <xpath expr="//field[@name='lot_id']" position="after">
+        <record id="view_stock_move_line_detailed_operation_tree_inherits" model="ir.ui.view">
+            <field name="name">stock.move.line.operations.tree.inherits</field>
+            <field name="model">stock.move.line</field>
+             <field name="inherit_id" ref="stock.view_stock_move_line_detailed_operation_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='lot_id']" position="after">
                 <field name="unity_nbr"/>
             </xpath>
-        </template>
+            </field>
+        </record> 
 		
     </data>
 </odoo>
