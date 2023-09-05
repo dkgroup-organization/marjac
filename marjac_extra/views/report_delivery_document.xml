@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_delivery_document_inherits" inherit_id="stock.report_delivery_document">
+
+            <xpath expr="//div[@class='page']//h2" position="replace">
+                <h2>Bon de livraison <span t-field="o.name"/></h2>
+            </xpath>
+			
+            <xpath expr="//div[@class='page']//table[@name='stock_move_line_table']" position="replace">
+                <table class="table table-sm mt48" t-if="o.move_line_ids and o.state=='done'" name="stock_move_line_table">
+                        <t t-set="has_serial_number" t-value="False"/>
+                        <t t-set="has_serial_number" t-value="o.move_line_ids.mapped('lot_id')" groups="stock.group_lot_on_delivery_slip"/>
+                        <thead>
+                            <tr>
+                                <th name="th_sml_product"><strong>Produit</strong></th>
+                                <t name="lot_serial" t-if="has_serial_number">
+                                    <th>
+                                        N° Lot
+                                    </th>
+                                </t>
+                                <th name="th_sml_qty_ordered" class="text-center" t-if="not has_serial_number">
+                                    <strong>Commandé</strong>
+                                </th>
+
+                                <th name="th_sml_quantity" class="text-center"><strong>Délivré</strong></th>
+
+                                <t name="lot_serial2" t-if="has_serial_number">
+                                    <th name="th_sml_quantity" class="text-center"><strong>Nbr d'unité</strong></th>
+                                    <th name="th_sml_production_date" class="text-center"><strong>Date de fabrication</strong></th>
+                                    <th name="th_sml_expiration_date" class="text-center"><strong>Date d'expiration</strong></th>
+                                </t>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <!-- This part gets complicated with different use cases (additional use cases in extensions of this report):
+                                1. If serial numbers are used and set to print on delivery slip => print lines as is, otherwise group them by overlapping
+                                    product + description + uom combinations
+                                2. If any packages are assigned => split products up by package (or non-package) and then apply use case 1 -->
+                            <!-- If has destination packages => create sections of corresponding products -->
+                            <t t-if="o.has_packages" name="has_packages">
+                                <t t-set="packages" t-value="o.move_line_ids.mapped('result_package_id')"/>
+                                <t t-foreach="packages" t-as="package">
+                                    <t t-call="stock.stock_report_delivery_package_section_line"/>
+                                    <t t-set="package_move_lines" t-value="o.move_line_ids.filtered(lambda l: l.result_package_id == package)"/>
+                                    <!-- If printing lots/serial numbers => keep products in original lines -->
+                                    <t t-if="has_serial_number">
+                                        <tr t-foreach="package_move_lines" t-as="move_line">
+                                            <t t-call="stock.stock_report_delivery_has_serial_move_line"/>
+                                        </tr>
+                                    </t>
+                                    <!-- If not printing lots/serial numbers => merge lines with same product+description+uom -->
+                                    <t t-else="">
+                                        <t t-set="aggregated_lines" t-value="package_move_lines._get_aggregated_product_quantities(strict=True)"/>
+                                        <t t-call="stock.stock_report_delivery_aggregated_move_lines"/>
+                                    </t>
+                                </t>
+                                <!-- Make sure we do another section for package-less products if they exist -->
+                                <t t-set="move_lines" t-value="o.move_line_ids.filtered(lambda l: not l.result_package_id)"/>
+                                <t t-set="aggregated_lines" t-value="o.move_line_ids._get_aggregated_product_quantities(except_package=True)"/>
+                                <t t-if="move_lines or aggregated_lines" name="no_package_move_lines">
+                                    <t t-call="stock.stock_report_delivery_no_package_section_line" name="no_package_section"/>
+                                    <t t-if="has_serial_number">
+                                        <tr t-foreach="move_lines" t-as="move_line">
+                                            <t t-call="stock.stock_report_delivery_has_serial_move_line"/>
+                                        </tr>
+                                    </t>
+                                    <t t-elif="aggregated_lines">
+                                        <t t-call="stock.stock_report_delivery_aggregated_move_lines"/>
+                                    </t>
+                                </t>
+                            </t>
+                            <!-- No destination packages -->
+                            <t t-else="">
+                                <!-- If printing lots/serial numbers => keep products in original lines -->
+                                <t t-if="has_serial_number">
+                                    <tr t-foreach="o.move_line_ids" t-as="move_line">
+                                        <t t-call="stock.stock_report_delivery_has_serial_move_line"/>
+                                    </tr>
+                                </t>
+                                <!-- If not printing lots/serial numbers => merge lines with same product -->
+                                <t t-else="" name="aggregated_move_lines">
+                                    <t t-set="aggregated_lines" t-value="o.move_line_ids._get_aggregated_product_quantities()"/>
+                                    <t t-call="stock.stock_report_delivery_aggregated_move_lines"/>
+                                </t>
+                            </t>
+                        </tbody>
+                    </table>
+            </xpath>
+
+            <xpath expr="//div[@class='page']" position="after">
+                <div class="signatures">
+                    <div class="signature" style="text-align: center; border: 1px solid black; width: 30%; display: inline-block; margin-left: 95px; height: 150px;">
+                        <p class="name">Accusé client :</p>
+                        <p class="placeholder"></p>
+                    </div>
+                    <div class="signature" style="text-align: center; border: 1px solid black; width: 30%; display: inline-block; margin-left: 130px; height: 150px;">
+                        <p class="name">Responsable stock :</p>
+                        <p class="placeholder"></p>
+                    </div>
+                </div>
+            </xpath>
+
+		</template>
+
+        <template id="stock_report_delivery_has_serial_move_line_inherits" inherit_id="stock.stock_report_delivery_has_serial_move_line">
+            <xpath expr="//td[@name='move_line_lot_qty_done']" position="after">
+                <td><span t-field="move_line.unity_nbr"/></td>
+                <td><span t-field="move_line.lot_id.fabrication_date" t-options='{"widget": "date"}'/></td>
+                <td><span t-field="move_line.lot_id.expiration_date" t-options='{"widget": "date"}'/></td>
+            </xpath>
+        </template>
+
+        <record id="view_stock_move_line_detailed_operation_tree_inherits" model="ir.ui.view">
+            <field name="name">stock.move.line.operations.tree.inherits</field>
+            <field name="model">stock.move.line</field>
+             <field name="inherit_id" ref="stock.view_stock_move_line_detailed_operation_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='lot_id']" position="after">
+                <field name="unity_nbr"/>
+            </xpath>
+            </field>
+        </record> 
+		
+    </data>
+</odoo>
