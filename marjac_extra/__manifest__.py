@@ -3,7 +3,7 @@
 {
     "name": "Ajout champs divers dans les livraisons et leurs rapports",
     "version": "1.0",
-    "depends": ['base', 'sale', 'account', 'stock', 'product_expiry'],
+    "depends": ['base', 'sale', 'account', 'stock', 'product_expiry', 'delivery'],
     "author": "Mehdi Hajji",
     "summary": "Date de fabrication, Date d'expiration, Nbre d'unité etc...",
     'website': 'http://www.dkdigital.fr',
