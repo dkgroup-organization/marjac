@@ -27,6 +27,7 @@
 
                                 <t name="lot_serial2" t-if="has_serial_number">
                                     <th name="th_sml_quantity" class="text-center"><strong>Nbr d'unité</strong></th>
+                                    <th name="th_sml_quantity" class="text-center"><strong>Weight</strong></th>
                                     <th name="th_sml_production_date" class="text-center"><strong>Date de fabrication</strong></th>
                                     <th name="th_sml_expiration_date" class="text-center"><strong>Date d'expiration</strong></th>
                                 </t>
@@ -106,6 +107,7 @@
         <template id="stock_report_delivery_has_serial_move_line_inherits" inherit_id="stock.stock_report_delivery_has_serial_move_line">
             <xpath expr="//td[@name='move_line_lot_qty_done']" position="after">
                 <td><span t-field="move_line.unity_nbr"/></td>
+                <td><span t-field="move_line.weight"/></td>
                 <td><span t-field="move_line.lot_id.fabrication_date" t-options='{"widget": "date"}'/></td>
                 <td><span t-field="move_line.lot_id.expiration_date" t-options='{"widget": "date"}'/></td>
             </xpath>
@@ -118,6 +120,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='lot_id']" position="after">
                 <field name="unity_nbr"/>
+                <field name="weight"/>
             </xpath>
             </field>
         </record> 

@@ -12,3 +12,14 @@ class StockMoveLineInherits(models.Model):
         string="Nbr d'unité",
     )
     
+
+    weight = fields.Float(
+        string='Weight',
+        compute='get_line_weight',
+        store=True
+    )
+
+    @api.depends('move_id.weight')
+    def get_line_weight(self):
+        for rec in self:
+            rec.weight = rec.move_id.weight
