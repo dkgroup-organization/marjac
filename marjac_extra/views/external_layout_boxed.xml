@@ -5,9 +5,7 @@
         <template id="external_layout_boxed_inherits" name="external_layout_boxed_inherits" inherit_id="web.external_layout_boxed">
             <xpath expr="//div[@class='row mb8']" position="replace">
                 <div class="row mb8">
-                    <div class="col-6">
                         <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo"/>
-                    </div>
                     <div class="col-6 text-end mb4">
                         <div class="mt0 h4" t-field="company.report_header"/>
                         <div name="company_address" class="float-end mb4">
