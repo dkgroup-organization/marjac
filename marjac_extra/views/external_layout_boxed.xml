@@ -4,7 +4,7 @@
 
         <template id="external_layout_boxed_inherits" name="external_layout_boxed_inherits" inherit_id="web.external_layout_boxed">
             <xpath expr="//img" position="replace">
-                
+                <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo" style="width: 200px; height: 200px;" />
             </xpath>
         </template> 
 		
