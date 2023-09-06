@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="external_layout_boxed_inherits" name="external_layout_boxed_inherits" inherit_id="web.external_layout_boxed">
+            <xpath expr="//img" position="replace">
+                
+            </xpath>
+        </template> 
+		
+    </data>
+</odoo>

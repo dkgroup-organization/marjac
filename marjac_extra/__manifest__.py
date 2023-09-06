@@ -13,6 +13,7 @@
     'data': [
         'views/report_delivery_document.xml',
         'views/stock_lot_view.xml',
+        'views/external_layout_boxed.xml',
     ],
     'demo_xml': [],
     'installable': True,
