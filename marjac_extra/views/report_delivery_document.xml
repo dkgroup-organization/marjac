@@ -27,7 +27,7 @@
 
                                 <t name="lot_serial2" t-if="has_serial_number">
                                     <th name="th_sml_quantity" class="text-center"><strong>Nbr d'unité</strong></th>
-                                    <th name="th_sml_quantity" class="text-center"><strong>Weight</strong></th>
+                                    <th name="th_sml_quantity" class="text-center"><strong>Poids</strong></th>
                                     <th name="th_sml_production_date" class="text-center"><strong>Date de fabrication</strong></th>
                                     <th name="th_sml_expiration_date" class="text-center"><strong>Date d'expiration</strong></th>
                                 </t>

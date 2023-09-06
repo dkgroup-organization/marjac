@@ -14,7 +14,7 @@ class StockMoveLineInherits(models.Model):
     
 
     weight = fields.Float(
-        string='Weight',
+        string='Poids',
         compute='get_line_weight',
         store=True
     )
