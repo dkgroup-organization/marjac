@@ -104,6 +104,19 @@
                 </div>
             </xpath>
 
+            <xpath expr="//div[@name='div_sched_date']" position="replace">
+                <div t-if="o.state" class="col-auto" name="div_sched_date">
+                    <strong>Date d'expédition :</strong>
+                    <t t-if="o.state == 'done'">
+                        <!-- <p t-field="o.date_done"/> -->
+                        <p t-field="o.scheduled_date"/>
+                    </t>
+                    <t t-if="o.state != 'done'">
+                        <p t-field="o.scheduled_date"/>
+                    </t>
+                </div>
+            </xpath>
+
 		</template>
 
         <template id="stock_report_delivery_has_serial_move_line_inherits" inherit_id="stock.stock_report_delivery_has_serial_move_line">
