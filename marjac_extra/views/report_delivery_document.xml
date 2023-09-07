@@ -90,9 +90,9 @@
             </xpath>
 
             <xpath expr="//div[@class='page']" position="after">
-                <div class="signatures">
+                <div class="signatures" style="margin-top: 60px !important;">
                     <!-- <div class="signature" style="text-align: center; border: 1px solid black; width: 30%; display: inline-block; margin-left: 95px; height: 150px;"> -->
-                    <div class="signature" style="text-align: center; width: 30%; display: inline-block; margin-left: 95px; height: 150px; margin-top: 40px !important;">
+                    <div class="signature" style="text-align: center; width: 30%; display: inline-block; margin-left: 95px; height: 150px;">
                         <p class="name">Accusé client :</p>
                         <p class="placeholder"></p>
                     </div>
