@@ -90,15 +90,30 @@
             </xpath>
 
             <xpath expr="//div[@class='page']" position="after">
-                <div class="signatures">
-                    <div class="signature" style="text-align: center; border: 1px solid black; width: 30%; display: inline-block; margin-left: 95px; height: 150px;">
+                <div class="signatures" style="margin-top: 100px !important;">
+                    <!-- <div class="signature" style="text-align: center; border: 1px solid black; width: 30%; display: inline-block; margin-left: 95px; height: 150px;"> -->
+                    <div class="signature" style="text-align: center; width: 30%; display: inline-block; margin-left: 95px; height: 150px;">
                         <p class="name">Accusé client :</p>
                         <p class="placeholder"></p>
                     </div>
-                    <div class="signature" style="text-align: center; border: 1px solid black; width: 30%; display: inline-block; margin-left: 130px; height: 150px;">
+                    <!-- <div class="signature" style="text-align: center; border: 1px solid black; width: 30%; display: inline-block; margin-left: 130px; height: 150px;"> -->
+                    <div class="signature" style="text-align: center; width: 30%; display: inline-block; margin-left: 130px; height: 150px;">
                         <p class="name">Responsable stock :</p>
                         <p class="placeholder"></p>
                     </div>
+                </div>
+            </xpath>
+
+            <xpath expr="//div[@name='div_sched_date']" position="replace">
+                <div t-if="o.state" class="col-auto" name="div_sched_date">
+                    <strong>Date d'expédition :</strong>
+                    <t t-if="o.state == 'done'">
+                        <!-- <p t-field="o.date_done"/> -->
+                        <p t-field="o.scheduled_date"/>
+                    </t>
+                    <t t-if="o.state != 'done'">
+                        <p t-field="o.scheduled_date"/>
+                    </t>
                 </div>
             </xpath>
 
