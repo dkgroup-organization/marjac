@@ -9,4 +9,5 @@ class StockLotInherits(models.Model):
 
     
     fabrication_date = fields.Date(string='Date de fabrication')
+    active = fields.Boolean(default=True)
     
