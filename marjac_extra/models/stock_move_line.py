@@ -16,7 +16,6 @@ class StockMoveLineInherits(models.Model):
     weight = fields.Float(
         string='Poids',
         compute='get_line_weight',
-        store=True
     )
 
     @api.depends('product_id.weight', 'qty_done')
