@@ -19,7 +19,7 @@ class StockMoveLineInherits(models.Model):
         store=True
     )
 
-    @api.depends('move_id.weight')
+    @api.depends('product_id.weight', 'qty_done')
     def get_line_weight(self):
         for rec in self:
-            rec.weight = rec.move_id.weight
+            rec.weight = rec.product_id.weight * rec.qty_done
