@@ -11,7 +11,7 @@
     "description": "Ajouter des infos sup",
     "init_xml": [],
     'data': [
-        'views/report_delivery_document.xml',
+        # 'views/report_delivery_document.xml',
         'views/stock_lot_view.xml',
         'views/external_layout_boxed.xml',
     ],
